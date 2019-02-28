@@ -8,7 +8,7 @@ namespace HashCode
     {
         public static void Main(string[] args)
         {
-            var allLines = System.IO.File.ReadAllLines(@"C:\Users\viliu\Desktop\HashCode\HashCode\HashCode\c_memorable_moments.txt").ToList();
+            var allLines = System.IO.File.ReadAllLines(@"C:\Users\Laptop\Documents\Projektai\HashCode\HashCode\e_shiny_selfies.txt").ToList();
 
             var allPhotos = FileReader.GetAllPhotos(allLines);
 
@@ -40,7 +40,7 @@ namespace HashCode
             var arrayOfRes = InterestCounter.GetResultString(finalListOfSlides);
 
             using (System.IO.StreamWriter file =
-                new System.IO.StreamWriter(@"C:\Users\viliu\Desktop\HashCode\HashCode\HashCode\results.txt"))
+                new System.IO.StreamWriter(@"C:\Users\Laptop\Documents\Projektai\HashCode\HashCode\results.txt"))
             {
                 foreach (var res in arrayOfRes)
                 {
