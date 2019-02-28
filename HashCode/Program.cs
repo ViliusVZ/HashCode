@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace HashCode
@@ -6,9 +8,48 @@ namespace HashCode
     {
         public static void Main(string[] args)
         {
-            var allLines = System.IO.File.ReadAllLines(@"C:\Users\viliu\Desktop\HashCode\HashCode\HashCode\a_example.txt").ToList();
+            var allLines = System.IO.File.ReadAllLines(@"C:\Users\viliu\Desktop\HashCode\HashCode\HashCode\c_memorable_moments.txt").ToList();
 
             var allPhotos = FileReader.GetAllPhotos(allLines);
+
+            var temporaryListOfSlides = new List<Slide>();
+
+            foreach (var photo in allPhotos)
+            {
+                if (allPhotos.Count(n => n.AlreadyUsed == false) > 0)
+                {
+                    temporaryListOfSlides.Add(SlideMaker.MakeSlide(allPhotos));
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            var finalListOfSlides = new List<Slide>();
+
+            foreach (var slide in temporaryListOfSlides)
+            {
+                if (slide.SlidePhotos.Count > 0)
+                {
+                    finalListOfSlides.Add(slide);
+                }
+
+            }
+
+            var arrayOfRes = InterestCounter.GetResultString(finalListOfSlides);
+
+            using (System.IO.StreamWriter file =
+                new System.IO.StreamWriter(@"C:\Users\viliu\Desktop\HashCode\HashCode\HashCode\results.txt"))
+            {
+                foreach (var res in arrayOfRes)
+                {
+                    Console.WriteLine(res);
+                    file.WriteLine(res);
+                }
+            }
+
+            Console.ReadKey();
         }
     }
 }

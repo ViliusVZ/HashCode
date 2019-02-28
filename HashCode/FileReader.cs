@@ -13,7 +13,7 @@ namespace HashCode
             for (int j = 1; j < listFromFile.Count; j++)
             {
                 var photo = new Photo();
-
+                photo.id = j - 1;
                 splitArray = listFromFile[j].Split(' ');
 
                 photo.Orientation = Convert.ToChar(splitArray[0]);

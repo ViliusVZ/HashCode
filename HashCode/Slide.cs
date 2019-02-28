@@ -1,13 +1,10 @@
+using System.Collections.Generic;
+
 namespace HashCode
 {
     public class Slide
     {
-        public Photo FirstPhoto { get; set; }
-        public Photo SecondPhoto { get; set; }
-
-        private void ComparePhotos(Photo photoOne, Photo photoTwo)
-        {
-
-        }
+        public List<Photo> SlidePhotos { get; set; } = new List<Photo>();
+        public bool IsValid { get; set; } = false;
     }
 }
